@@ -1,0 +1,17 @@
+[package]
+name = "core-shell"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rustyline = "15.0.0"
+
+[profile.release]
+strip = true
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+debug = false
+overflow-checks = false
+incremental = false
