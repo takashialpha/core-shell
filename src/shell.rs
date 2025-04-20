@@ -1,5 +1,5 @@
-use crate::run::{execute, parse};
 use crate::env::{get_current_dir, get_prompt_symbol};
+use crate::run::{execute, parse};
 use std::process::exit;
 
 struct Prompt {
@@ -21,7 +21,6 @@ impl Prompt {
 pub struct Shell;
 
 impl Shell {
-
     pub fn init() {
         Self::run_loop();
     }

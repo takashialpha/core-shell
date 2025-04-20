@@ -1,5 +1,5 @@
-use std::process::Command;
 use crate::builtin::BUILTINS;
+use std::process::Command;
 
 pub fn parse(line: String) -> Option<(String, Vec<String>)> {
     let input = line.trim();
@@ -38,10 +38,9 @@ pub fn execute(cmd: &str, cmd_args: &[String]) {
 
 fn catch_builtins(cmd: &str, cmd_args: &[String]) -> bool {
     if let Some(builtin) = BUILTINS.get(cmd) {
-        let args: Vec<&str> = cmd_args.iter().map(|s| s.as_str()).collect();
-        builtin(&args);
+        builtin(&cmd_args.iter().map(String::as_str).collect::<Vec<_>>());
+
         return true;
     }
     false
 }
-

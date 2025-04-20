@@ -1,7 +1,7 @@
+mod builtin;
+mod env;
 mod run;
 mod shell;
-mod env;
-mod builtin;
 
 use crate::shell::Shell;
 

@@ -5,7 +5,7 @@
 - [ ] Implement tests
 - [x] Add history (no file)
 - [ ] Implement simple tab completion / suggestions
-- [ ] Implement built-in commands (cd, exit, etc.)
+- [x] Implement built-in commands (cd, exit, etc.)
 - [ ] Full POSIX like shell (Pipes, simple structures, environment variables, etc.)
 - [x] Fancier shell (show up current dir, example: "(/home/user) $ ")
 - [ ] Capacity to run scripts
