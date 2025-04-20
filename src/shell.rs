@@ -1,6 +1,5 @@
 use crate::run::{execute, parse};
 use crate::env::{get_current_dir, get_prompt_symbol};
-use rustyline::DefaultEditor;
 use std::process::exit;
 
 struct Prompt {

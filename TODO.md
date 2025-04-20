@@ -3,8 +3,8 @@
 ## Features
 - [ ] Implement clap to parse arguments
 - [ ] Implement tests
-- [ ] Implement error handler (error.rs)
 - [x] Add history (no file)
+- [ ] Implement simple tab completion / suggestions
 - [ ] Implement built-in commands (cd, exit, etc.)
 - [ ] Full POSIX like shell (Pipes, simple structures, environment variables, etc.)
 - [x] Fancier shell (show up current dir, example: "(/home/user) $ ")
