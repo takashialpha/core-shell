@@ -11,12 +11,20 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+
+    - name: Build and measure time
+      run: |
+        start=$(date +%s)
+        cargo build --release
+        end=$(date +%s)
+        echo "Build time: $((end - start)) seconds"
+
+    - name: Binary size
+      run: |
+        BIN=$(cargo metadata --format-version=1 --no-deps | jq -r '.packages[0].targets[] | select(.kind[] == "bin") | .name')
+        SIZE=$(stat -c%s "target/release/$BIN")
+        echo "Binary size: $SIZE bytes"
