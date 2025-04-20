@@ -15,7 +15,6 @@ pub fn shell_loop() -> Result<(), rustyline::error::ReadlineError> {
             Err(ReadlineError::Eof) => break,
             Err(err) => {
                 println!("Error: {:?}", err);
-                break;
             }
         }
     }
