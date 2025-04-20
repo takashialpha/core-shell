@@ -2,7 +2,7 @@
 
 ## Features
 - [x] Implement clap to parse arguments
-- [ ] Implement tests
+- [x] Implement tests (github workflows)
 - [x] Add history (no file)
 - [ ] Implement simple tab completion / suggestions
 - [x] Implement built-in commands (cd, exit, etc.)

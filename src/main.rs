@@ -4,6 +4,7 @@ mod run;
 mod shell;
 
 use crate::shell::Shell;
+use crate::run::{parse, execute};
 use clap::{Command, Arg};
 
 const VERSION: &str = "0.1.0";
@@ -23,10 +24,27 @@ fn main() {
                 .help("Displays the license information")
                 .action(clap::ArgAction::SetTrue),
         )
+        .arg(
+            Arg::new("command")
+                .short('c')
+                .long("command")
+                .help("Run a single command and exit, e.g. -c \"echo hello\"")
+                .num_args(1)
+        )
         .get_matches();
+    
 
+    // license flag behavior
     if matches.get_flag("license") {
         println!("Core Shell is licensed under the Apache-2.0");
+        return;
+    }
+    
+    // command flag behavior
+    if let Some(cmd) = matches.get_one::<String>("command") {
+        if let Some((name, args)) = parse(cmd.to_string()) {
+            execute(&name, &args);
+        }
         return;
     }
 
