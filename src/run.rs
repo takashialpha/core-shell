@@ -19,11 +19,12 @@ pub fn parse(line: String) -> Option<(String, Vec<String>)> {
 }
 
 pub fn execute(cmd: &str, cmd_args: &[String]) {
-    match Command::new(cmd).args(cmd_args).output() {
-        Ok(output) => {
-            print!("{}", String::from_utf8_lossy(&output.stdout));
-        }
-        Err(_) => {}
-    }
+    let _ = Command::new(cmd)
+        .args(cmd_args)
+        .stdin(std::process::Stdio::inherit())
+        .stdout(std::process::Stdio::inherit())
+        .stderr(std::process::Stdio::inherit())
+        .spawn()
+        .and_then(|mut child| child.wait());
 }
 
