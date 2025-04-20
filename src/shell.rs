@@ -1,25 +1,57 @@
 use crate::run::{execute, parse};
-use rustyline::error::ReadlineError;
+use crate::env::{get_current_dir, get_prompt_symbol};
 use rustyline::DefaultEditor;
 use std::process::exit;
 
-pub fn shell_loop() -> Result<(), rustyline::error::ReadlineError> {
-    let mut rl = DefaultEditor::new()?;
-    loop {
-        match rl.readline("$ ") {
-            Ok(line) => {
-                let _ = rl.add_history_entry(&line); // Add the line to history (no file)
-                if let Some((cmd, args)) = parse(line) {
-                    execute(&cmd, &args);
-                }
-            }
-            Err(ReadlineError::Interrupted) => {}
-            Err(ReadlineError::Eof) => break,
+struct Prompt {
+    prompt: String,
+}
+
+impl Prompt {
+    fn generate() -> Self {
+        Prompt {
+            prompt: format!(
+                "\n({})\n{} ",
+                get_current_dir().unwrap_or("".to_string()),
+                get_prompt_symbol()
+            ),
+        }
+    }
+}
+
+pub struct Shell;
+
+impl Shell {
+
+    pub fn init() {
+        Self::run_loop();
+    }
+
+    fn run_loop() {
+        let mut rl = match rustyline::DefaultEditor::new() {
+            Ok(editor) => editor,
             Err(err) => {
                 println!("Error: {:?}", err);
-                exit(1);
+                return;
+            }
+        };
+
+        loop {
+            let prompt = Prompt::generate();
+            match rl.readline(&prompt.prompt) {
+                Ok(line) => {
+                    let _ = rl.add_history_entry(&line);
+                    if let Some((cmd, args)) = parse(line) {
+                        execute(&cmd, &args);
+                    }
+                }
+                Err(rustyline::error::ReadlineError::Interrupted) => {}
+                Err(rustyline::error::ReadlineError::Eof) => break,
+                Err(err) => {
+                    println!("Error: {:?}", err);
+                    exit(1);
+                }
             }
         }
     }
-    Ok(())
 }
