@@ -27,4 +27,5 @@ jobs:
       run: |
         BIN=$(cargo metadata --format-version=1 --no-deps | jq -r '.packages[0].targets[] | select(.kind[] == "bin") | .name')
         SIZE=$(stat -c%s "target/release/$BIN")
-        echo "Binary size: $SIZE bytes"
+        SIZE_MB=$(echo "scale=2; $SIZE/1048576" | bc)
+        echo "Binary size: $SIZE_MB MB"
