@@ -3,6 +3,11 @@ name = "core-shell"
 version = "0.1.0"
 edition = "2021"
 
+[package.metadata]
+description = "A light and fast shell written in Rust"
+authors = ["takashialpha <takashialpha@protonmail.com>"]
+license = "Apache-2.0"
+
 [dependencies]
 clap = { version = "4.5.37", features = ["derive", "env"] }
 rustyline = "15.0.0"

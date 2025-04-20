@@ -1,7 +1,7 @@
 # TODO List for Shell Project
 
 ## Features
-- [ ] Implement clap to parse arguments
+- [x] Implement clap to parse arguments
 - [ ] Implement tests
 - [x] Add history (no file)
 - [ ] Implement simple tab completion / suggestions
