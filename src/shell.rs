@@ -77,7 +77,7 @@ impl Shell {
                 Ok(line) => {
                     self.data.history.lines.push(line.clone());
                     let _ = self.rl.add_history_entry(&line);
-                    
+
                     if self.data.config.save_history {
                         CoreShellFile::save(&self.data);
                     }

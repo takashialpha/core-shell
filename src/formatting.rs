@@ -52,3 +52,18 @@ impl Formatter {
         format!("\x1b[{};{}m{}\x1b[0m", style_code, color, text)
     }
 }
+
+pub mod builtins {
+    // use super::*;
+    // uncomment if you need to use the Color and Formatter structs
+
+    pub fn echo(args: &[&str]) {
+        for arg in args {
+            print!("{}", arg);
+            if !arg.ends_with('\n') {
+                print!(" ");
+            }
+        }
+        println!();
+    }
+}

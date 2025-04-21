@@ -1,8 +1,8 @@
+use crate::env::get_home_dir;
+use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::Path;
 use toml;
-use crate::env::get_home_dir;
-use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Clone)]
 pub struct Config {
@@ -92,4 +92,3 @@ impl CoreShellFile {
         let _ = fs::write(path, toml);
     }
 }
-
