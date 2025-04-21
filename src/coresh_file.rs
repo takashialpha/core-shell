@@ -1,8 +1,8 @@
-use crate::env::get_home_dir;
-use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::Path;
 use toml;
+use crate::env::get_home_dir;
+use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Clone)]
 pub struct Config {
@@ -50,10 +50,13 @@ impl CoreShellFile {
             return default;
         }
 
-        fs::read_to_string(&path)
-            .ok()
-            .and_then(|c| toml::from_str(&c).ok())
-            .unwrap_or_default()
+        match Self::read_and_parse_file(&path) {
+            Ok(parsed) => parsed,
+            Err(_) => {
+                Self::create_default_file(&path);
+                CoreShellData::default()
+            }
+        }
     }
 
     pub fn save(data: &CoreShellData) {
@@ -76,4 +79,17 @@ impl CoreShellFile {
             None => String::new(),
         }
     }
+
+    fn read_and_parse_file(path: &str) -> Result<CoreShellData, Box<dyn std::error::Error>> {
+        let content = fs::read_to_string(path)?;
+        let parsed = toml::from_str::<CoreShellData>(&content)?;
+        Ok(parsed)
+    }
+
+    fn create_default_file(path: &str) {
+        let default = CoreShellData::default();
+        let toml = toml::to_string_pretty(&default).unwrap();
+        let _ = fs::write(path, toml);
+    }
 }
+
