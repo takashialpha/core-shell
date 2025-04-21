@@ -3,7 +3,7 @@
 ## Features
 - [ ] Implement simple tab completion / suggestions
 - [ ] Full POSIX like shell (Pipes, simple structures, environment variables, etc.)
-- [ ] Write /home/user (or user home directory) as ~ in prompt
+- [x] Write /home/user (or user home directory) as ~ in prompt
 - [ ] Add more built-in commands
 - [ ] Add history+config file in an optimized way
 
