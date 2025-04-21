@@ -1,14 +1,15 @@
 mod builtin;
+mod coresh_file;
 mod env;
-mod run;
-mod shell;
-mod script;
 mod formatting;
+mod run;
+mod script;
+mod shell;
 
-use crate::shell::Shell;
+use crate::run::{execute, parse};
 use crate::script::run_script;
-use crate::run::{parse, execute};
-use clap::{Command, Arg};
+use crate::shell::Shell;
+use clap::{Arg, Command};
 
 const VERSION: &str = "0.2.0";
 
@@ -32,17 +33,16 @@ fn main() {
                 .short('c')
                 .long("command")
                 .help("Run a single command and exit, e.g. -c \"echo hello\"")
-                .num_args(1)
+                .num_args(1),
         )
         .arg(
             Arg::new("script")
                 .value_name("SCRIPT")
                 .help("Path to a shell script to execute")
-                .value_parser(clap::value_parser!(std::path::PathBuf))
+                .value_parser(clap::value_parser!(std::path::PathBuf)),
         )
-
         .get_matches();
-    
+
     // script flag behavior
     if let Some(path) = matches.get_one::<std::path::PathBuf>("script") {
         run_script(path);
@@ -54,7 +54,7 @@ fn main() {
         println!("Core Shell is licensed under the Apache-2.0");
         return;
     }
-    
+
     // command flag behavior
     if let Some(cmd) = matches.get_one::<String>("command") {
         if let Some((name, args)) = parse(cmd.to_string()) {
@@ -65,4 +65,3 @@ fn main() {
 
     Shell::init();
 }
-

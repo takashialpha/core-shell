@@ -1,8 +1,11 @@
+use crate::coresh_file::{CoreShellData, CoreShellFile};
 use crate::env::{get_current_dir, get_prompt_symbol};
+use crate::formatting::{Color, Formatter, Style};
 use crate::run::{execute, parse};
-use crate::formatting::{Color, Style, Formatter};
-use std::process::exit;
 use atty::Stream;
+use rustyline::error::ReadlineError;
+use rustyline::DefaultEditor;
+use std::process::exit;
 
 struct Prompt {
     prompt: String,
@@ -27,8 +30,14 @@ impl Prompt {
         let mut symbol_str = format!("{} ", symbol);
         if colored {
             match symbol {
-                '$' => symbol_str = Formatter::apply_formatting(symbol_str, Color::Green, Some(Style::Bold)),
-                '#' => symbol_str = Formatter::apply_formatting(symbol_str, Color::Red, Some(Style::Bold)),
+                '$' => {
+                    symbol_str =
+                        Formatter::apply_formatting(symbol_str, Color::Green, Some(Style::Bold))
+                }
+                '#' => {
+                    symbol_str =
+                        Formatter::apply_formatting(symbol_str, Color::Red, Some(Style::Bold))
+                }
                 _ => {}
             }
         }
@@ -37,15 +46,14 @@ impl Prompt {
     }
 }
 
-pub struct Shell;
+pub struct Shell {
+    data: CoreShellData,
+    rl: DefaultEditor,
+}
 
 impl Shell {
     pub fn init() {
-        Self::run_loop();
-    }
-
-    fn run_loop() {
-        let mut rl = match rustyline::DefaultEditor::new() {
+        let rl = match DefaultEditor::new() {
             Ok(editor) => editor,
             Err(err) => {
                 println!("Error: {:?}", err);
@@ -53,22 +61,44 @@ impl Shell {
             }
         };
 
+        let mut shell = Shell {
+            data: CoreShellFile::load(),
+            rl,
+        };
+
+        shell.load_history();
+        shell.run_loop();
+    }
+
+    fn run_loop(&mut self) {
         loop {
             let prompt = Prompt::generate();
-            match rl.readline(&prompt.prompt) {
+            match self.rl.readline(&prompt.prompt) {
                 Ok(line) => {
-                    let _ = rl.add_history_entry(&line);
+                    self.data.history.lines.push(line.clone());
+                    let _ = self.rl.add_history_entry(&line);
+
+                    if self.data.config.save_history {
+                        CoreShellFile::save(&self.data);
+                    }
+
                     if let Some((cmd, args)) = parse(line) {
                         execute(&cmd, &args);
                     }
                 }
-                Err(rustyline::error::ReadlineError::Interrupted) => {}
-                Err(rustyline::error::ReadlineError::Eof) => break,
+                Err(ReadlineError::Interrupted) => {}
+                Err(ReadlineError::Eof) => break,
                 Err(err) => {
                     println!("Error: {:?}", err);
                     exit(1);
                 }
             }
+        }
+    }
+
+    fn load_history(&mut self) {
+        for entry in &self.data.history.lines {
+            let _ = self.rl.add_history_entry(entry);
         }
     }
 }

@@ -1,16 +1,17 @@
 use std::env;
 
+pub fn get_home_dir() -> Option<String> {
+    env::var("HOME").ok()
+}
+
 pub fn get_current_dir() -> Option<String> {
-    let current = match env::current_dir() {
-        Ok(path) => path.to_string_lossy().into_owned(),
-        Err(_) => return None,
-    };
-    let home = env::var("HOME").unwrap_or_default();
-    let abbreviated = match current.strip_prefix(&home) {
-        Some(suffix) => format!("~{}", suffix),
-        None => current,
-    };
-    Some(abbreviated)
+    let current = env::current_dir().ok()?.to_string_lossy().into_owned();
+    let home_path = get_home_dir()?;
+    Some(
+        current
+            .strip_prefix(&home_path)
+            .map_or_else(|| current.clone(), |s| format!("~{}", s)),
+    )
 }
 
 pub fn get_prompt_symbol() -> char {

@@ -52,4 +52,3 @@ impl Formatter {
         format!("\x1b[{};{}m{}\x1b[0m", style_code, color, text)
     }
 }
-

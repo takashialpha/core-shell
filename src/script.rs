@@ -1,4 +1,4 @@
-use crate::run::{parse, execute};
+use crate::run::{execute, parse};
 use std::path::Path;
 
 pub fn run_script(path: &Path) {
@@ -16,4 +16,3 @@ pub fn run_script(path: &Path) {
         }
     }
 }
-
