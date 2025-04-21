@@ -1,10 +1,10 @@
 [package]
 name = "core-shell"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 [package.metadata]
-description = "A fast, minimal POSIX-like shell written in Rust."
+description = "A fast, POSIX-like shell written in Rust."
 authors = ["takashialpha <takashialpha@protonmail.com>"]
 license = "Apache-2.0"
 

@@ -1,7 +1,7 @@
 
 # core-shell
 
-**A fast, minimal POSIX-like shell written in Rust.**
+**A fast, POSIX-like shell written in Rust.**
 
 
 ## Features
@@ -60,6 +60,8 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 - [libc](https://docs.rs/libc) – low-level system bindings
 - [ctrlc](https://docs.rs/ctrlc) – Ctrl+C handler
 - [lazy_static](https://docs.rs/lazy_static) – static initialization
+- [atty](https://docs.rs/atty) – check if terminal has a TTY
+
 
 
 ## License
@@ -78,4 +80,4 @@ Huge thanks to the maintainers of the dependencies and the Rust ecosystem.
 
 ***
 
-core-shell readme 0.1.0 from core-shell 0.1.0
+core-shell readme 0.2.0 from core-shell 0.2.0
