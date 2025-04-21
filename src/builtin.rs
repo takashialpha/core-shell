@@ -24,11 +24,22 @@ fn exit(_: &[&str]) {
     process::exit(0);
 }
 
+fn echo(args: &[&str]) {
+    for arg in args {
+        print!("{}", arg);
+        if !arg.ends_with('\n') {
+            print!(" ");
+        }
+    }
+    println!();
+}
+
 lazy_static! {
     pub static ref BUILTINS: HashMap<&'static str, BuiltInCmd> = {
         let mut m = HashMap::new();
         m.insert("cd", cd as BuiltInCmd);
         m.insert("exit", exit as BuiltInCmd);
+        m.insert("echo", echo as BuiltInCmd);
         m
     };
 }
