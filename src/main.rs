@@ -19,7 +19,7 @@ fn main() {
     let matches = Command::new("Core Shell")
         .version(VERSION)
         .author("takashialpha <takashialpha@protonmail.com>")
-        .about("A fast and light shell written in Rust")
+        .about("A fast, minimal POSIX-like shell written in Rust.")
         .arg(
             Arg::new("license")
                 .long("license")
