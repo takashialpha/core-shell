@@ -69,7 +69,7 @@ Apache-2.0
 
 ## Credits
 
-Huge thanks to the maintainers of the dependencies and the Rust ecosystem. **PLEASE READ OUR [WIKI](https://github.com/takashialpha/core-shell/wiki) FOR MORE INFORMATION**
+Huge thanks to the maintainers of the dependencies and the Rust ecosystem.              **PLEASE READ OUR [WIKI](https://github.com/takashialpha/core-shell/wiki) FOR MORE INFORMATION**
 
 > ⚠️ Warning: Some information may be outdated as this README is updated only with new releases.
 
