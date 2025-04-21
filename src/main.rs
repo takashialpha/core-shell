@@ -3,6 +3,7 @@ mod env;
 mod run;
 mod shell;
 mod script;
+mod formatting;
 
 use crate::shell::Shell;
 use crate::script::run_script;
