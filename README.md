@@ -66,10 +66,13 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 
 Apache-2.0
 
+## Wiki
+
+**PLEASE READ OUR [WIKI](https://github.com/takashialpha/core-shell/wiki) FOR MORE INFORMATION**
 
 ## Credits
 
-Huge thanks to the maintainers of the dependencies and the Rust ecosystem.              **PLEASE READ OUR [WIKI](https://github.com/takashialpha/core-shell/wiki) FOR MORE INFORMATION**
+Huge thanks to the maintainers of the dependencies and the Rust ecosystem.
 
 > ⚠️ Warning: Some information may be outdated as this README is updated only with new releases.
 
