@@ -49,6 +49,7 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 ```
 
 > ⚠️ Warning: replacing `/bin/sh` can be dangerous if you dont know what you're doing, make sure to test the shell before using it as your sh.
+> Bugs can be found as the project is in constant development.
 
 
 ## Dependencies
@@ -69,3 +70,9 @@ Apache-2.0
 ## Credits
 
 Huge thanks to the maintainers of the dependencies and the Rust ecosystem.
+
+
+
+> ⚠️ Warning: Some information may be outdated as this README is updated only with new releases.
+
+README v0.1.0
