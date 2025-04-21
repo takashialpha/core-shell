@@ -2,8 +2,8 @@
 
 ## Features
 - [ ] Implement simple tab completion / suggestions
-- [ ] Full POSIX like shell (Pipes, simple structures, environment variables, etc.)
-- [ ] Add more built-in commands
+- [ ] Pipes, simple structures for shell scripting
+- [ ] Add more (more) built-in commands
 
 ## Bugs
 
