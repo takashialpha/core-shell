@@ -71,8 +71,8 @@ Apache-2.0
 
 Huge thanks to the maintainers of the dependencies and the Rust ecosystem.
 
-
-
 > ⚠️ Warning: Some information may be outdated as this README is updated only with new releases.
 
-README v0.1.0
+***
+
+core-shell wiki 0.1.0 from core-shell 0.1.0
