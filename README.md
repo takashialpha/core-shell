@@ -68,7 +68,7 @@ Apache-2.0
 
 ## Wiki
 
-**PLEASE READ OUR [WIKI](https://github.com/takashialpha/core-shell/wiki) FOR MORE INFORMATION**
+**please read our [wiki](https://github.com/takashialpha/core-shell/wiki) for more information**
 
 ## Credits
 
