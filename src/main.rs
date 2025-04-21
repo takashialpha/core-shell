@@ -2,8 +2,10 @@ mod builtin;
 mod env;
 mod run;
 mod shell;
+mod script;
 
 use crate::shell::Shell;
+use crate::script::run_script;
 use crate::run::{parse, execute};
 use clap::{Command, Arg};
 
@@ -31,8 +33,20 @@ fn main() {
                 .help("Run a single command and exit, e.g. -c \"echo hello\"")
                 .num_args(1)
         )
+        .arg(
+            Arg::new("script")
+                .value_name("SCRIPT")
+                .help("Path to a shell script to execute")
+                .value_parser(clap::value_parser!(std::path::PathBuf))
+        )
+
         .get_matches();
     
+    // script flag behavior
+    if let Some(path) = matches.get_one::<std::path::PathBuf>("script") {
+        run_script(path);
+        return;
+    }
 
     // license flag behavior
     if matches.get_flag("license") {
