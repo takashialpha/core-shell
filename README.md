@@ -63,11 +63,8 @@ Memory usage: 2.9 MB (RAM usage)
 - [clap](https://docs.rs/clap) – command-line argument parser
 - [rustyline](https://docs.rs/rustyline) – readline implementation
 - [shell-words](https://docs.rs/shell-words) – simple shell-like argument parser
-- [libc](https://docs.rs/libc) – low-level system bindings
-- [ctrlc](https://docs.rs/ctrlc) – Ctrl+C handler
-- [lazy_static](https://docs.rs/lazy_static) – static initialization
-- [atty](https://docs.rs/atty) – check if terminal has a TTY
-
+... and it continues
+check it out in our [Cargo.toml](https://github.com/takashialpha/core-shell/blob/main/Cargo.toml)
 
 observations: you dont need to install these dependencies, they are automatically installed by cargo when you build the project.
 
