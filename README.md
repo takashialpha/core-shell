@@ -51,6 +51,12 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 > ⚠️ Warning: replacing `/bin/sh` can be dangerous if you dont know what you're doing, make sure to test the shell before using it as your sh.
 > Bugs can be found as the project is in constant development.
 
+## Statistics
+Lines of rust code: 280 (measured by [cloc](github.com/AlDanial/cloc))
+Binary size: 0.99 MB (less than a Megabyte)
+CPU usage: 0.0% (in modern computers)
+Memory usage: 2.6 MB (RAM usage)
+> ⚠️ Warning: The statistics may vary depending on the system.
 
 ## Dependencies
 
@@ -61,8 +67,7 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 - [ctrlc](https://docs.rs/ctrlc) – Ctrl+C handler
 - [lazy_static](https://docs.rs/lazy_static) – static initialization
 - [atty](https://docs.rs/atty) – check if terminal has a TTY
-
-
+observations: you dont need to install these dependencies, they are automatically installed by cargo when you build the project.
 
 ## License
 
@@ -70,7 +75,7 @@ Apache-2.0
 
 ## Wiki
 
-**please read our [wiki](https://github.com/takashialpha/core-shell/wiki) for more information**
+**Please read our [wiki](https://github.com/takashialpha/core-shell/wiki) for more information.**
 
 ## Credits
 
