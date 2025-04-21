@@ -1,9 +1,7 @@
----
 
 # core-shell
 
 **A fast, minimal POSIX-like shell written in Rust.**
-
 
 
 ## Features
@@ -16,7 +14,6 @@
 - Clean and fast parser
 - Meant to be lightweight enough for `/bin/sh`
 
----
 
 ## Usage
 
@@ -33,7 +30,6 @@ core-shell [OPTIONS] [SCRIPT]
 - `-h, --help` — Print help
 - `-V, --version` — Print version
 
----
 
 ## Installation
 
@@ -53,7 +49,7 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 ```
 
 > ⚠️ Warning: replacing `/bin/sh` can be dangerous if you dont know what you're doing, make sure to test the shell before using it as your sh.
----
+
 
 ## Dependencies
 
@@ -64,17 +60,12 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 - [ctrlc](https://docs.rs/ctrlc) – Ctrl+C handler
 - [lazy_static](https://docs.rs/lazy_static) – static initialization
 
----
 
 ## License
 
 Apache-2.0
 
----
 
 ## Credits
 
 Huge thanks to the maintainers of the dependencies and the Rust ecosystem.
-
-
----
