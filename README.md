@@ -5,7 +5,6 @@
 **A fast, minimal POSIX-like shell written in Rust.**
 
 
----
 
 ## Features
 
