@@ -52,10 +52,10 @@ sudo ln -sf /bin/core-shell /bin/sh - this part sets the core-shell as your sh
 > Bugs can be found as the project is in constant development.
 
 ## Statistics
-Lines of rust code: 280 (measured by [cloc](github.com/AlDanial/cloc))
-Binary size: 0.99 MB (less than a Megabyte)
+Lines of rust code: 499 (measured by [cloc](github.com/AlDanial/cloc))
+Binary size: 1.2 MB (almost a megabyte)
 CPU usage: 0.0% (in modern computers)
-Memory usage: 2.6 MB (RAM usage)
+Memory usage: 2.9 MB (RAM usage)
 > ⚠️ Warning: The statistics may vary depending on the system.
 
 ## Dependencies
@@ -67,6 +67,8 @@ Memory usage: 2.6 MB (RAM usage)
 - [ctrlc](https://docs.rs/ctrlc) – Ctrl+C handler
 - [lazy_static](https://docs.rs/lazy_static) – static initialization
 - [atty](https://docs.rs/atty) – check if terminal has a TTY
+
+
 observations: you dont need to install these dependencies, they are automatically installed by cargo when you build the project.
 
 ## License
@@ -85,4 +87,4 @@ Huge thanks to the maintainers of the dependencies and the Rust ecosystem.
 
 ***
 
-core-shell readme 0.2.0 from core-shell 0.2.0
+core-shell readme 0.3.0 from core-shell 0.3.0

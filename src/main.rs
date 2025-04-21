@@ -11,7 +11,7 @@ use crate::script::run_script;
 use crate::shell::Shell;
 use clap::{Arg, Command};
 
-const VERSION: &str = "0.2.0";
+const VERSION: &str = "0.3.0";
 
 fn main() {
     // Avoids exit by SIGINT
